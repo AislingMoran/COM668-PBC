@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head') %>
+<body>
+<%- include('includes/memberHeader') %>
+
+<main>
+    <form action="/safetyForm" method="POST">
+        <h2>Going out on the Water?</h2>
+
+        <fieldset>
+            <h3>Weather Conditions</h3>
+            <img src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png" alt="Weather Icon">
+            <% if (weather) { %>
+                <p><strong>Location:</strong> <%= weather.name %></p>
+                <p><strong>Temperature:</strong> <%= weather.main.temp %>°C</p>
+                <p><strong>Conditions:</strong> <%= weather.weather[0].description %></p>
+
+                <p><strong>Wind Speed:</strong> <%= weather.wind.speed %> km/h</p>
+            <% } else { %>
+                <p>Weather data not available.</p>
+            <% } %>
+        </fieldset>
+
+        <fieldset>
+            <!--autopopulate with people who have said they'll be there -->
+            <label for="sessionNames">Who's going out?</label>
+            <select id="sessionNames" name="sessionNames" multiple>
+                <% participants.forEach(name => { %>
+                    <option value="<%= name %>"><%= name %></option>
+                <% }) %>
+            </select>
+
+            <br />
+
+            <label for="start_time">Start Time:</label>
+            <input type="time" name="start_time" required class="input-field">
+
+            <label for="end_time">End Time:</label>
+            <input type="time" name="end_time" required class="input-field">
+
+            <br />
+
+            <label for="whoKey">Who's the Keyholder?</label>
+
+            <input type="text" id="whoKey" name="whoKey" placeholder="Enter who has Keys" autocomplete="off">
+
+            <br />
+
+            <button>Submit</button>
+        </fieldset>
+    </form>
+</main>
+
+<%- include('includes/footer')%>
+</body>
+</html>

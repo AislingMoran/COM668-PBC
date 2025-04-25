@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head') %>
+<body>
+<%- include('includes/header') %>
+
+<main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const parentCheckbox = document.getElementById("parent-role");
+            const childSection = document.getElementById("child-reg");
+            const childrenList = document.getElementById("children-list");
+            const addChildButton = document.getElementById("add-child");
+
+            // Show/Hide Child Registration Section
+            parentCheckbox.addEventListener("change", function () {
+                childSection.style.display = parentCheckbox.checked ? "block" : "none";
+            });
+
+            // Add Child Input Fields
+            addChildButton.addEventListener("click", function () {
+                const childDiv = document.createElement("div");
+                childDiv.classList.add("child-entry");
+                childDiv.innerHTML = `
+                <input type="text" name="children[][name]" placeholder="Child's Name" required>
+                <select name="children[][gender]" required>
+                    <option value="">Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="number" name="children[][age]" placeholder="Age" min="1" required>
+                <button type="button" class="remove-child">Remove</button>
+            `;
+                childrenList.appendChild(childDiv);
+
+                // Remove Child Entry
+                childDiv.querySelector(".remove-child").addEventListener("click", function () {
+                    childDiv.remove();
+                });
+            });
+        });
+    </script>
+    <form action="/register" method="POST">
+
+        <% errors.forEach(error => { %>
+            <p class="notice"><%= error %></p>
+        <% }) %>
+
+        <fieldset>
+            <legend>Create Account</legend>
+
+            <label for="verificationCode">Verification Code</label>
+            <input type="text" id="verificationCode" name="verificationCode" placeholder="Enter verification code" autocomplete="off" required>
+
+            <br />
+
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter your first name" autocomplete="off" required>
+
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="surname" placeholder="Enter your surname" autocomplete="off" required>
+
+            <br />
+
+            <label for="email">Email Address</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email" autocomplete="off" required>
+
+            <br />
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="off">
+
+            <br />
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" required>
+
+            <br />
+
+            <!--Are you a parent/guardian, rower, keyholder, or coach multiple choice question -->
+            <label>Select Your Roles:</label>
+            <div class="role-selection">
+                <label><input type="checkbox" name="role[]" value="rower"> Rower</label>
+                <label><input type="checkbox" name="role[]" value="parent" id="parent-role"> Parent/Guardian</label>
+                <label><input type="checkbox" name="role[]" value="coach"> Coach</label>
+                <label><input type="checkbox" name="role[]" value="keyholder"> Keyholder</label>
+            </div>
+
+            <!--if parent/guardian allow them to register with children aswell-->
+            <div id="child-reg" style="display: none;">
+                <h3>Child Registration</h3>
+                <div id="children-list"></div>
+                <button type="button" id="add-child">+ Add Child</button>
+            </div>
+
+            <br />
+
+            <button>Create Account</button>
+        </fieldset>
+    </form>
+</main>
+
+<%- include('includes/footer')%>
+</body>
+</html>

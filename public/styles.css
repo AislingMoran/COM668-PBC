@@ -1,0 +1,285 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #b3cfa9;
+}
+
+main {
+    padding: 20px 30px 30px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Forms */
+fieldset {
+    border: none;
+    padding: 10px;
+    max-width: 600px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+legend {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* Form Buttons */
+button {
+    display: block;
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    margin-top: 30px; /* Extra spacing */
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* NavBar */
+.navbar, .member-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4b723a;
+    padding: 10px 20px;
+}
+
+.navbar a, .member-navbar a  {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.navbar a:hover, .member-navbar a:hover {
+    background-color: #fadb09;
+    border-radius: 5px;
+}
+
+.navbar img, .member-navbar img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    vertical-align: middle;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* Social media icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+}
+
+.social-icons a {
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Nav */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: #4b723a;
+        width: 100%;
+        top: 50px;
+        left: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #4b723a;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer img {
+    vertical-align: middle;
+}
+
+/* Role Selection for Registration */
+.role-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.role-selection label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-selection input {
+    margin-right: 5px;
+}
+
+/* Child Registration */
+#child-reg {
+    margin-top: 25px;
+    padding: 15px;
+}
+
+.remove-child {
+    background: #ff4d4d;
+    padding: 8px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Error Messages */
+.notice {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}

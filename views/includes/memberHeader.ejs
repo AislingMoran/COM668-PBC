@@ -1,0 +1,32 @@
+<header id="member-header">
+    <nav class="member-navbar">
+        <a href="/">
+            <img src="/images/pbcLogo.jpg" alt="PBC Logo" width="50"/>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="/training">Training</a></li>
+            <li><a href="/safetyForm">Water Session</a></li>
+            <li><a href="/calendar">Calendar</a></li>
+            <li><a href="/homepage">Club Documents</a></li>
+        <!--Dropdown, Constitution, Membership Agreement, Privacy Agreement, etc-->
+
+            <% if (user) { %>
+                <span class="member-user">Welcome, <%= user.username %>!</span>
+                <% if (user.isAdmin) { %>
+                    <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+                    <li><a href="/admin/training-bookings">View Training Bookings</a></li>
+                    <li><a href="/admin/safetyForms">View Safety Forms</a></li>
+                <% } %>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+            <% } %>
+        </ul>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        </nav>
+</header>

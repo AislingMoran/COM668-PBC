@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head') %>
+<body>
+<%- include('includes/memberHeader') %>
+
+<main>
+    <h2>Admin Dashboard</h2>
+    <div class="admin-container">
+        <div class="admin-card">
+            <h3>Training Bookings</h3>
+            <p>Total: <%= trainingCount %></p>
+            <a href="/admin/training-bookings">View Details</a>
+        </div>
+
+        <div class="admin-card">
+            <h3>Safety Forms</h3>
+            <p>Total: <%= safetyFormsCount %></p>
+            <a href="/admin/safetyForms">View Submissions</a>
+        </div>
+
+        <div class="admin-card">
+            <h3>Manage Training Sessions</h3>
+            <a href="/admin/create-training">Schedule Training</a>
+        </div>
+    </div>
+</main>
+
+<%- include('includes/footer') %>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head') %>
+<body>
+<%- include('includes/adminHeader') %>
+
+<main>
+    <h2>Safety Form Submissions</h2>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Weather</th>
+            <th>Temperature</th>
+            <th>Conditions</th>
+            <th>Wind Speed</th>
+            <th>Session Names</th>
+            <th>Keyholder</th>
+            <th>Submitted By</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% safetyForms.forEach(form => { %>
+            <tr>
+                <td><%= form.date.toLocaleDateString() %></td>
+                <td><img src="https://openweathermap.org/img/wn/<%= form.weather.icon %>@2x.png" alt="Weather Icon"></td>
+                <td><%= form.weather.temperature %>°C</td>
+                <td><%= form.weather.conditions %></td>
+                <td><%= form.weather.windSpeed %> km/h</td>
+                <td><%= form.sessionNames %></td>
+                <td><%= form.keyholder %></td>
+                <td><%= form.submittedBy ? form.submittedBy.username : "Unknown" %></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</main>
+
+<%- include('includes/footer') %>
+</body>
+</html>

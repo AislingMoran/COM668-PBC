@@ -1,0 +1,34 @@
+<script type="text/javascript" src="script.js"></script>
+<header id="header">
+    <nav class="navbar">
+        <a href="/">
+            <img src="/images/pbcLogo.jpg" alt="PBC Logo" width="50"/>
+        </a>
+
+        <!-- Nav Links -->
+        <ul class="nav-links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/safety">River Safety</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <% if (user) { %>
+                <li><a href="/dashboard">Dashboard</a></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+            <% } %>
+        </ul>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/portadownboatclub/" target="_blank">
+                <img src="/images/instagramLogo.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.facebook.com/PortadownBoatClub" target="_blank">
+                <img src="/images/facebookLogo.png" alt="Facebook" class="social-icon">
+            </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+</header>

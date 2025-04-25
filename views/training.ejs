@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('includes/head') %>
+<body>
+<%- include('includes/memberHeader') %>
+
+<main>
+    <h2>Training</h2>
+    <form action="/book-training" method="POST">
+        <h2>Book Training</h2>
+
+        <% if (user.role === 'parent') { %>
+            <label for="child_id">Select Child:</label>
+            <select name="child_id" required class="input-field">
+                <% user.children.forEach(child => { %>
+                    <option value="<%= child.id %>"><%= child.name %></option>
+                <% }); %>
+            </select>
+        <% } %>
+
+        <% if (user.role !== 'parent') { %>
+            <label for="location">Location:</label>
+            <select name="location" required class="input-field">
+                <option value="gym">Gym</option>
+                <option value="outside">Outside</option>
+            </select>
+        <% } %>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" required class="input-field" id="dateInput">
+
+        <!-- Time Selection -->
+        <label for="start_time">Start Time:</label>
+        <input type="time" name="start_time" required class="input-field">
+
+        <label for="end_time">End Time:</label>
+        <input type="time" name="end_time" required class="input-field">
+
+        <button type="submit" class="submit-btn">Book Training</button>
+    </form>
+
+    <script>
+        //Autofill current date for convenience
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('dateInput').valueAsDate = new Date();
+        });
+    </script>
+
+
+    <h2>Upcoming Training Sessions</h2>
+    <ul>
+        <% trainingSessions.forEach(session => { %>
+            <li>
+                <strong><%= session.title %></strong> - <%= new Date(session.date).toDateString() %>
+                <p><%= session.description %></p>
+
+                <% if (user.role === 'parent') { %>
+                    <form action="/join-session" method="POST">
+                        <input type="hidden" name="session_id" value="<%= session._id %>">
+                        <button type="submit">Mark Attendance</button>
+                    </form>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+
+</main>
+
+<%- include('includes/footer')%>
+</body>
+</html>
