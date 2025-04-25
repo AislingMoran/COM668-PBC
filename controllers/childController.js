@@ -1,4 +1,4 @@
-const Child = require("../models/child");
+const Child = require("../models/Child");
 
 // Add Child to Parent Account
 exports.addChild = async (req, res) => {
@@ -7,13 +7,13 @@ exports.addChild = async (req, res) => {
             return res.status(403).send("Only parents can add children.");
         }
 
-        const { name, gender, age } = req.body;
-
+        const { firstName, surname, gender, dob } = req.body;
         const newChild = new Child({
-            parent: req.user.userid,
-            name,
+            parent: req.user._id,
+            firstName,
+            surname,
             gender,
-            age
+            dob: new Date(dob)
         });
 
         await newChild.save();

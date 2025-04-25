@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const safetyFormSchema = new mongoose.Schema({
-    date: { type: Date, default: Date.now },
     weather: {
         location: String,
         temperature: Number,
@@ -9,9 +8,15 @@ const safetyFormSchema = new mongoose.Schema({
         windSpeed: Number,
         icon: String
     },
-    sessionNames: String,
+    sessionNames: [String],
     keyholder: String,
-    submittedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-});
+    startTime: String,
+    endTime: String,
+    submittedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+}, { timestamps: true });
 
 module.exports = mongoose.model("SafetyForm", safetyFormSchema);
+
