@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
 const childSchema = new mongoose.Schema({
-    parent: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Links child to parent account
-    name: { type: String, required: true }, // Child's name
-    gender: { type: String, enum: ["Male", "Female", "Other"], required: true }, // Gender selection
-    age: { type: Number, required: true, min: 1 } // Age validation
+    parent: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    firstName: { type: String, required: true },
+    surname: { type: String, required: true },
+    gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
+    dob: { type: Date, required: true }
 });
 
 module.exports = mongoose.model("Child", childSchema);

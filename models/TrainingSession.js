@@ -4,10 +4,13 @@ const trainingSessionSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: String,
     date: { type: Date, required: true },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false }
+    start_time: { type: String, required: true },
+    end_time: { type: String, required: true },
+    timeRange: { type: String },
+    location: { type: String, enum: ["gym", "outside"], required: true },
+    audience: { type: String, enum: ["juniors", "masters"], required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
-// Check if the model already exists before defining it again
-const TrainingSession = mongoose.models.TrainingSession || mongoose.model("TrainingSession", trainingSessionSchema);
-
-module.exports = TrainingSession;
+module.exports = mongoose.model.TrainingSession || mongoose.model("TrainingSession", trainingSessionSchema);
