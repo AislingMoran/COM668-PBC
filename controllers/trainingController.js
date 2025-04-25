@@ -5,7 +5,6 @@ const User = require("../models/User");
 const getDashboardItems = async (userId, userRoles) => {
     const now = new Date();
     now.setHours(0, 0, 0, 0);
-    const isParentOnly = userRoles.length === 1 && userRoles.includes("parent");
 
     // 1. Get all joined sessions and bookings
     const joinedSessions = await TrainingSession.find({

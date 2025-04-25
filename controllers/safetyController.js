@@ -1,7 +1,6 @@
 const axios = require("axios");
 const SafetyForm = require("../models/SafetyForm");
 const Booking = require("../models/Booking");
-const User = require("../models/User");
 
 //Weather API Data + Safety Form
 exports.getSafetyForm = async (req, res) => {
