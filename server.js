@@ -11,7 +11,6 @@ const { setUser } = require("./middleware/setUser");
 //Import Routes
 const authRoutes = require("./routes/authRoutes");
 const mainRoutes = require("./routes/mainRoutes");
-const safetyRoutes = require("./routes/safetyRoutes");
 const trainingRoutes = require("./routes/trainingRoutes");
 
 //Connect Frontend
@@ -34,7 +33,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/PBC')
 //Routes
 app.use("/", authRoutes);
 app.use("/", mainRoutes);
-app.use("/", safetyRoutes);
 app.use("/", trainingRoutes);
 
 //Local Host
